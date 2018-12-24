@@ -18,13 +18,12 @@ addons:
   sonarcloud:
     organization: "georgesmiley-github"
     token:
-      secure:  "0+3KsSKN+6KZpk9KeTvh4QxvhICoMxW7yhh3aAx/kDeq/NyHDT5TuGB5sJe5EaxhL1RlwDfedAHyj+oSgVedL0NrnS0Vfv+3Q2WNV+sJ1x4y7mFujMUek8OsXGTlwasZoikpwTOlRVvceCltFWiG373CoHOwtitjy8cSSXuI56Qq+FxgmoOapcmfQ08wQPMoH13sTYacqsnW/QKI/hu+c4AR2dtmCK4+jSmFzLnMWHwU3zy7/JvDn3H14wTrzfEUmHeO/LiyTs4Mlcxo30/Tnn5TQ/h6ap8BUYY/k3g1yJQ75yjg20JRACeGPAePpf5SqiWtek8w1OSz2sO2OdTa3AVkp0AehePvYPJDl8uG0QB5UANourQWShk9PYkF5vmju51NnpK3gKKby1zWy6MogRmi8Zt/QdBMScjSlu2OfVui8QTdV26pPZ96y+C6rL4rFWc4h5GAIUZfEE+KNObJQJDjDeBNynfmfTPndR5Il6l0yXdzBZPo3HKxopwHiztvTBa21un7YGZFGxzEb57nA1JMIlRRzFbCGNQCI8JM/2PV7Gtw2/qqPhOtWUUJu4cdorHmYruBDu+gRSO1AexG0BQNEyBCX86BCrC9CaqjQC4cFXAmwGInwtcZOk1HvsxkG55X7rrt5S7roY3ru9F/udAkgwECChe078aSlh7mbMg="
-
+      secure:  "LwG+i2HywWN9sBG8oH4zPdHaNfHflto4bN9urO/mucJr2z/96YeWBkmN6DHgd7VKssVcwfAyb1eUPPoBrnzcyPt7KH6K3Go/Jt5mfFDrp/u66ccNklU/DqB8ZiJdWHvxSVscWLUUDO6DFzi9VPG8th7SibFizm/+ESMem+znodWer/k9fHxtnbi0wks74YIscMDsZsh+Zr/Ikr58fexjFMIlmz1NE5rk2zbfnKfKejraFFgPnd9b8iEkcORIzlbxnm7ISuX9X43NJMML4urifuMMJ4qpu+pPbtX1k7kWiLB5sDoDlr9FyQMMoNvrPJsp2CpXrcwZOFK2auLZk0qqP0zOWXN8FHOSdpkq9McXFPsCvNhjRbHgoMAxf5vny00vqE0w9tD3BLcCqqxBTL4Czk/QAZ+ZSJvNXmcJOHrXqL8Byi5gZY47Zu9h0SFbybiLZUbVTKj6Gq5ML2W9VJnbMErGm8P7qOsrkkQzUyrYoEO95WrK9A1YzUu4ruLzoAOqWdpxfnfZZ8uWcncQs+b6ighymVPUwprDcZO/8bfAxDy9D2uvV4jr3ulLndJQVE/R4bUqH5PHZi6PxHeoo1ewmXx789INnsqDxw6yjhYg4IAWe3FofkmkvK5LSya08HVLONv4UITFMJXZ6vvkICg+bFm4E/jmqjvTVpr5hVCslTg="
 
 script:
   - mvn -f plex-data-handler/pom.xml clean verify -Pjacoco coveralls:report
-  - mvn -f plex-data-handler/pom.xml  -Pjacoco sonar:sonar
-  - mvn -f plex-data-handler/pom.xml  -Pfailsafe
+  - mvn -f plex-data-handler/pom.xml clean verify -Pjacoco sonar:sonar
+  - mvn -f plex-data-handler/pom.xml clean verify -Pfailsafe
 cache:
   directories:
   - $HOME/.m2
