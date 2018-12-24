@@ -22,9 +22,9 @@ addons:
 
 
 script:
-  - mvn -f guitar-webapp-server/pom.xml clean verify -Pjacoco coveralls:report
-  - mvn -f guitar-webapp-server/pom.xml  -Pjacoco sonar:sonar
-  - mvn -f guitar-webapp-server/pom.xml  -Pfailsafe
+  - mvn -f plex-data-handler/pom.xml clean verify -Pjacoco coveralls:report
+  - mvn -f plex-data-handler/pom.xml  -Pjacoco sonar:sonar
+  - mvn -f plex-data-handler/pom.xml  -Pfailsafe
 cache:
   directories:
   - $HOME/.m2
