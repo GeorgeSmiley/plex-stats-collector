@@ -1,0 +1,30 @@
+language: java
+
+sudo: required
+
+# skip installation step
+install: true
+
+services:
+ - docker
+
+install:
+ - docker pull mongo
+
+before_install:
+ sh -e /etc/init.d/xvfb start;
+
+addons:
+  sonarcloud:
+    organization: "georgesmiley-github"
+    token:
+      secure:  "0+3KsSKN+6KZpk9KeTvh4QxvhICoMxW7yhh3aAx/kDeq/NyHDT5TuGB5sJe5EaxhL1RlwDfedAHyj+oSgVedL0NrnS0Vfv+3Q2WNV+sJ1x4y7mFujMUek8OsXGTlwasZoikpwTOlRVvceCltFWiG373CoHOwtitjy8cSSXuI56Qq+FxgmoOapcmfQ08wQPMoH13sTYacqsnW/QKI/hu+c4AR2dtmCK4+jSmFzLnMWHwU3zy7/JvDn3H14wTrzfEUmHeO/LiyTs4Mlcxo30/Tnn5TQ/h6ap8BUYY/k3g1yJQ75yjg20JRACeGPAePpf5SqiWtek8w1OSz2sO2OdTa3AVkp0AehePvYPJDl8uG0QB5UANourQWShk9PYkF5vmju51NnpK3gKKby1zWy6MogRmi8Zt/QdBMScjSlu2OfVui8QTdV26pPZ96y+C6rL4rFWc4h5GAIUZfEE+KNObJQJDjDeBNynfmfTPndR5Il6l0yXdzBZPo3HKxopwHiztvTBa21un7YGZFGxzEb57nA1JMIlRRzFbCGNQCI8JM/2PV7Gtw2/qqPhOtWUUJu4cdorHmYruBDu+gRSO1AexG0BQNEyBCX86BCrC9CaqjQC4cFXAmwGInwtcZOk1HvsxkG55X7rrt5S7roY3ru9F/udAkgwECChe078aSlh7mbMg="
+
+
+script:
+  - mvn -f guitar-webapp-server/pom.xml clean verify -Pjacoco coveralls:report
+  - mvn -f guitar-webapp-server/pom.xml  -Pjacoco sonar:sonar
+  - mvn -f guitar-webapp-server/pom.xml  -Pfailsafe
+cache:
+  directories:
+  - $HOME/.m2
